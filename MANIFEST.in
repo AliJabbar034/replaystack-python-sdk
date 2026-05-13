@@ -1,0 +1,31 @@
+# Files included in the sdist (`.tar.gz`).
+# The wheel itself is built from `[tool.setuptools.packages.find]` in pyproject.toml
+# and only ships the `replaystack_sdk/` package (plus `py.typed` and metadata).
+
+include LICENSE
+include README.md
+include CHANGELOG.md
+include pyproject.toml
+include MANIFEST.in
+
+# Ship type marker so PEP 561 consumers see hints.
+recursive-include replaystack_sdk py.typed
+
+# Tests stay in the sdist so packagers / distros can run them from the tarball.
+recursive-include tests *.py
+
+# Exclude developer-only / repo-only material from the sdist.
+prune .github
+prune docs
+prune examples
+prune .venv
+prune dist
+prune build
+prune .pytest_cache
+prune .mypy_cache
+prune .ruff_cache
+
+global-exclude __pycache__
+global-exclude *.py[cod]
+global-exclude *.so
+global-exclude .DS_Store

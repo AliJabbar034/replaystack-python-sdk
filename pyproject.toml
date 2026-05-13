@@ -1,0 +1,132 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "replaystack-sdk"
+version = "1.1.0"
+description = "ReplayStack Python SDK for backend event capture, exception tracing, and replay debugging."
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "ReplayStack" }]
+keywords = [
+  "replaystack",
+  "tracereplay",
+  "debugging",
+  "observability",
+  "sdk",
+  "fastapi",
+  "flask",
+  "django",
+]
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Intended Audience :: Developers",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+  "Typing :: Typed",
+  "Framework :: FastAPI",
+  "Framework :: Flask",
+  "Framework :: Django",
+  "Topic :: Software Development :: Debuggers",
+  "Topic :: Software Development :: Libraries :: Python Modules",
+  "Topic :: System :: Logging",
+  "Topic :: System :: Monitoring",
+]
+dependencies = [
+  "requests>=2.28.0",
+]
+
+[project.optional-dependencies]
+fastapi = ["starlette>=0.27.0", "fastapi>=0.95.0"]
+flask = ["flask>=2.0.0"]
+django = ["django>=4.0.0"]
+all = [
+  "starlette>=0.27.0",
+  "fastapi>=0.95.0",
+  "flask>=2.0.0",
+  "django>=4.0.0",
+]
+dev = [
+  "build>=1.0.0",
+  "twine>=4.0.0",
+  "pytest>=7.0.0",
+  "pytest-cov>=4.0.0",
+  "ruff>=0.4.0",
+  "mypy>=1.5.0",
+  "types-requests",
+]
+
+[project.urls]
+Homepage = "https://replaystack.dev"
+Documentation = "https://docs.replaystack.dev"
+Repository = "https://github.com/replaystack/replaystack-python-sdk"
+Issues = "https://github.com/replaystack/replaystack-python-sdk/issues"
+Changelog = "https://github.com/replaystack/replaystack-python-sdk/blob/main/CHANGELOG.md"
+
+[tool.setuptools.packages.find]
+include = ["replaystack_sdk*"]
+exclude = ["tests*", "examples*"]
+
+[tool.setuptools.package-data]
+replaystack_sdk = ["py.typed"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+addopts = "-ra"
+filterwarnings = [
+  "ignore::DeprecationWarning:requests",
+]
+
+[tool.coverage.run]
+branch = true
+source = ["replaystack_sdk"]
+omit = ["replaystack_sdk/integrations/*"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "pragma: no cover",
+  "if TYPE_CHECKING:",
+  "raise NotImplementedError",
+]
+
+[tool.ruff]
+target-version = "py38"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+ignore = [
+  "E501",   # line length is handled by formatter
+  "B008",   # function calls in argument defaults are allowed (FastAPI style)
+  "UP006",  # keep typing.List etc. for py3.8 compatibility
+  "UP007",  # keep typing.Optional / typing.Union for py3.8 compatibility
+  "UP035",  # deprecated-import: typing.List etc. still needed on 3.8
+  "UP045",  # non-pep604-annotation-optional: X | None requires py3.10+
+  "SIM105", # `try/except: pass` is clearer than `contextlib.suppress` in hot paths
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B011", "E731"]
+
+[tool.mypy]
+# mypy itself no longer supports Python 3.8 stubs, but the SDK runs on 3.8+.
+# Type-check against 3.9 syntax; runtime code stays 3.8-compatible.
+python_version = "3.9"
+strict = false
+ignore_missing_imports = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+warn_unreachable = true
