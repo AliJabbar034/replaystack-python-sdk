@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "replaystack-sdk"
-version = "1.1.0"
+version = "1.1.2"
 description = "ReplayStack Python SDK for backend event capture, exception tracing, and replay debugging."
 readme = "README.md"
 requires-python = ">=3.8"
