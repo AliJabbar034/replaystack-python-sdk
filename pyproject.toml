@@ -68,8 +68,9 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://replaystack.dev"
-Documentation = "https://docs.replaystack.dev"
+Homepage = "https://replaystack.co"
+Documentation = "https://replaystack.dev/docs"
+PyPI = "https://pypi.org/project/replaystack-sdk/"
 Repository = "https://github.com/replaystack/replaystack-python-sdk"
 Issues = "https://github.com/replaystack/replaystack-python-sdk/issues"
 Changelog = "https://github.com/replaystack/replaystack-python-sdk/blob/main/CHANGELOG.md"
