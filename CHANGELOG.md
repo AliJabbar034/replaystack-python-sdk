@@ -4,6 +4,15 @@ All notable changes to `replaystack-sdk` are documented here. The format is base
 on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) and this project
 adheres to [Semantic Versioning](https://semver.org/).
 
+## [1.1.3] - 2026-05-15
+
+### Fixed
+
+- PyPI project URLs: Repository, Issues, and Changelog now point to
+  `github.com/AliJabbar034/replaystack-python-sdk` (the previous `replaystack/...`
+  paths returned 404).
+- Documentation URL in package metadata set to `https://www.replaystack.co/docs`.
+
 ## [1.1.2] - 2026-05-13
 
 Republish of the 1.1.0 distribution under a new version slot. No functional or
@@ -97,6 +106,7 @@ Feature-parity release with the official Node.js SDK
 
 Initial public release.
 
-[1.1.2]: https://github.com/replaystack/replaystack-python-sdk/releases/tag/v1.1.2
-[1.1.0]: https://github.com/replaystack/replaystack-python-sdk/releases/tag/v1.1.0
-[1.0.0]: https://github.com/replaystack/replaystack-python-sdk/releases/tag/v1.0.0
+[1.1.3]: https://github.com/AliJabbar034/replaystack-python-sdk/releases/tag/v1.1.3
+[1.1.2]: https://github.com/AliJabbar034/replaystack-python-sdk/releases/tag/v1.1.2
+[1.1.0]: https://github.com/AliJabbar034/replaystack-python-sdk/releases/tag/v1.1.0
+[1.0.0]: https://github.com/AliJabbar034/replaystack-python-sdk/releases/tag/v1.0.0
